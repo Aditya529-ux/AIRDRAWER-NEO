@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Air Draw — AI-Powered Hand Tracking Drawing</title>
+    <meta name="description" content="Real-time AI air drawing application using hand tracking with gesture recognition, neon effects, and AI shape detection. Draw in the air with your hands.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google Fonts for Premium Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- MediaPipe Libraries (CDN for reliable WASM loading) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Critical CSS — loaded immediately to prevent FOUC */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0a0e1a;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: white;
+            touch-action: none;
+        }
+
+        .font-mono-premium {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+        }
+
+        #webcam {
+            display: none;
+        }
+
+        /* Custom Range Slider (Critical) */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            margin-top: -5px;
+            box-shadow: 0 0 8px rgba(255,255,255,0.6);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 2px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

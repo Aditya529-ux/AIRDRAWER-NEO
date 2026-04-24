@@ -1,0 +1,232 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================================
+   LOADING SCREEN
+   ================================ */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, #0f172a 0%, #020617 100%);
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.loading-spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 255, 255, 0.1);
+  border-top: 3px solid #00ffff;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+  margin: 0;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.loading-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+  margin: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ================================
+   GESTURE STATUS HUD
+   ================================ */
+.gesture-status {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.gesture-icon {
+  font-size: 18px;
+}
+
+.gesture-mode {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+/* ================================
+   FPS COUNTER
+   ================================ */
+.fps-counter {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 60;
+  font-size: 11px;
+  color: rgba(0, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  letter-spacing: 1px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ================================
+   OVERLAY MESSAGE (No Hand Detected)
+   ================================ */
+.overlay-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.overlay-icon {
+  font-size: 56px;
+  animation: handWave 2.5s ease-in-out infinite;
+}
+
+@keyframes handWave {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(10deg); }
+  85%, 100% { transform: rotate(0deg); }
+}
+
+.overlay-text {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.5px;
+}
+
+.overlay-hint {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* ================================
+   RANGE SLIDER
+   ================================ */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+  margin: 12px 0;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.2s;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Firefox */
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* ================================
+   SCROLLBAR
+   ================================ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
